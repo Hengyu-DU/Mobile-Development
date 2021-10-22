@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name='viewport' content="width=device-width">
+  <title>移动端缩放</title>
+  <style>
+    img{
+      width: 200px;
+    }
+    #demo{
+      width: 150px;
+      height: 150px;
+      background-color: crimson;
+      color: white;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <img src="../imgs/1.jpg" alt="">
+    <img src="../imgs/2.jpg" alt="">
+    <img src="../imgs/3.jpg" alt="">
+    <img src="../imgs/4.jpg" alt="">
+  </div>
+  <div id='demo'></div>
+  <script type="text/javascript">
+    const demo = document.getElementById('demo')
+    demo.innerHTML = '布局视口宽度:' + document.documentElement.clientWidth + '</br>'
+    demo.innerHTML += '视觉视口宽度:' + window.innerWidth
+    // 在移动端， onresize监测的是布局视口的变化
+    window.onresize = () => {
+      demo.innerHTML = '布局视口宽度:' + document.documentElement.clientWidth + '</br>'
+      demo.innerHTML += '视觉视口宽度:' + window.innerWidth
+    }
+  </script>
+</body>
+</html>

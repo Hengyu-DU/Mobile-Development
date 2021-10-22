@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <!-- width => 布局视口    device-width => 设备独立像素 -->
+  <title>理想视口</title>
+  <link rel="stylesheet" href="../重置样式表/reset.css">
+  <style>
+    #demo{
+      width: 375px;
+      height: 200px;
+      background-color: crimson;
+      color: white;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="demo">123</div>
+  <script type="text/javascript">
+    const demo = document.getElementById('demo')
+    demo.innerHTML = '布局视口宽度:' + document.documentElement.clientWidth + '</br>'
+    demo.innerHTML += '视觉视口宽度:' + window.innerWidth
+  </script>
+</body>
+</html>

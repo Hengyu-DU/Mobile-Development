@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>布局视口</title>
+  <style>
+    #demo{
+      font-size: 40px;
+      width: 980px;
+      height: 300px;
+      background-color: cornflowerblue;
+    }
+  </style>
+</head>
+<body>
+  <div id="demo"></div>
+  <script type="text/javascript">
+    const demo = document.getElementById('demo')
+    demo.innerHTML = '布局视口宽度:' + document.documentElement.clientWidth
+  </script>
+</body>
+</html>
