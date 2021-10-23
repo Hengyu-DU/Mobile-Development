@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #demo{
+      height: 200px;
+      width: 200px;
+      background-color: rebeccapurple;
+      color: seashell;
+    }
+  </style>
+</head>
+<body>
+  <div id="demo">请触摸</div>
+  <script type="text/javascript">
+    const demo = document.getElementById('demo')
+
+    let time
+
+    demo.addEventListener('touchstart',()=>{
+      time = Date.now()
+      console.log('你开始摸我了！');
+    })
+    demo.addEventListener('click',()=>{
+      console.log('点击事件延迟时间：', Date.now()-time);
+    })
+  </script>
+</body>
+</html>

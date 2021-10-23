@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> 1 物理像素边框 </title>
+  <link rel="stylesheet" href="../重置样式表/reset.css">
+  <style>
+    #demo{
+      width: 3.45rem;
+      height: 1.5rem;
+      margin: 0 auto;
+      margin-top: 0.15rem;
+      background-color: pink;
+      border: 1px solid black;
+    }
+    @media screen and (-webkit-min-device-pixel-ratio:2){
+      #demo{
+        border: solid 0.5px black;
+      }
+    }
+    @media screen and (-webkit-min-device-pixel-ratio:3){
+      #demo{
+        border: solid 0.333px black;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="demo"></div>
+  <script type="text/javascript">
+  function adapter(){
+    const dip = document.documentElement.clientWidth
+    const rootFontSize = dip / 375 * 100
+    document.documentElement.style.fontSize = rootFontSize + 'px'
+  }
+  adapter()
+  window.onresize = adapter
+  </script>
+</body>
+</html>

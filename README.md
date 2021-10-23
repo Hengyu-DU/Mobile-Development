@@ -1,8 +1,8 @@
 # 移动端开发
 
-## 相关概念
+## 一、相关概念
 
-### 屏幕相关
+### （一）屏幕相关
 #### 1. 屏幕大小
   指屏幕对角线长度，单位是英寸（inch）。常见尺寸有：3.5寸、4.0寸、5.0寸、5.5寸、6.0寸等等。
     
@@ -39,7 +39,7 @@
 
 ![](./PPI.png)
 
-### 像素相关
+### （二）像素相关
 #### 1. 物理像素
    **物理像素又名：设备像素**，是一个长度单位（px）。一个物理像素就是屏幕上的一个物理成像点，就是屏幕中一个微小的发光物理元器件（可简单理解为超级微小的灯泡），是屏幕能显示的最小粒度。屏幕的物理像素点数（分辨率）是手机屏幕的一个重要参数，**由屏幕制造商决定，屏幕生产后无法修改**。例如iPhone6 横向上拥有的物理像素为750、纵向上拥有 的物理像素为1334，用750*1334表示。
 
@@ -82,8 +82,8 @@
 
 https://uiiiuiii.com/screen/index.htm
 
-### 图片高清显示
-#### 位图像素
+### （三）图片高清显示
+#### 1. 位图像素
 位图和矢量图
 * 位图：又称点阵图形或栅格图像，是由n个的像素点组成的。放大后会失真。（常见：png、jpeg、jpg、gif）
 一般用PhotoShop等软件进行编辑。
@@ -92,8 +92,10 @@ https://uiiiuiii.com/screen/index.htm
 
 位图像素也是一个长度单位，**位图像素**可以理解为位图中的一个“小格子”，是位图的最小单元。
 
+#### 2. 图片的高清显示（媒体查询）
 
-#### 图片的高清显示（媒体查询）
+目前一般仅logo需要做高清显示，或提供svg格式logo即可解决问题，否则采用媒体查询：
+
 ```css
 @media screen and (-webkit-min-device-pixel-ratio:2) {
       .logo{
@@ -107,7 +109,7 @@ https://uiiiuiii.com/screen/index.htm
 }
 ```
 
-### 视口相关
+### （四）视口相关
 #### PC端视口
   在pc端，视口的默认宽度和浏览器窗口的宽度一致。在css标准文档中，视口也被称作：初始包含块，它是所有css百分比宽度推算的根源，在PC端可通过如下几种方式获取宽度：
 ```js
@@ -148,7 +150,7 @@ https://uiiiuiii.com/screen/index.htm
   - 设备独立像素:375px
   - **布局视口宽度:375px**
  2. 用户不需要缩放、滚动就能看到网站的全部内容。
- 3. 要为移动端设备单独设计一个移动端网站。
+ 3. **要为移动端设备单独设计一个移动端网站。**
 
 设置理想视口的具体方法:
 ```html 
@@ -160,6 +162,7 @@ https://uiiiuiii.com/screen/index.htm
 > 1.描述屏幕:物理像素:750p×、设备独立像素:375px、css像素:980px。
 > 2.优点:元素在不同设备上，呈现效果几乎一样，因都是通过布局容器等比缩放的，例如200宽的盒子: 200/980
 > 3.缺点:元素太小，页面文字不清楚，用户体验不好。
+
 * 写meta标签（符合理想视口标准）:
 > 1.描述屏幕:物理像素:750px、设备独立像素:375px、css像素:375px。
 > 2.优点:页面清晰展现，内容不再小到难以观察，用户体验较好。
@@ -167,14 +170,16 @@ https://uiiiuiii.com/screen/index.htm
 > 4.如何解决:做适配。
 
 
-### 缩放
+### （五）缩放
 #### PC端缩放
 放大时：
 * 视口变小
 * 元素的css像素值不变，但一个css像素所占实际面积变大了。
+
 缩小时：
 * 视口变大
 * 元素的css像素值不变，但一个css像素所占实际面积变小了。
+
 算法过程： 放大时，浏览器向内截取一定比例面积，然后立即把裁剩下的画面等比例撑满整个视口，放不下的元素自动换行。
 
 监测脚本：
@@ -196,7 +201,7 @@ window.onresize = () => {
 
 注意：移动端缩放不会影响页面布局，因为缩放的时候，布局视口大小没有变化。
 
-## Viewport
+## 二、Viewport
 
 meta-viewport标签是苹果公司在2007年引进的，用于移动端布局视口的控制，企图改变980布局视口的行业规则。
 viewport相关选项：
@@ -229,7 +234,7 @@ minimum-scale = 屏幕宽度（设备独立像素，dip）/ 视觉视口宽度
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no, viewport-fit=cover">
 ```
 
-## 适配
+## 三、适配
 
 一、为什么要做适配？
 由于移动端设备的屏幕尺寸大小不一，会出现:同一个元素，在两个不同的手机上显示效果不一样（比例不同）。要想让同一个元素在不同设备上，显示效果一样，就需要适配，**无论采用何种适配方式，中心原则永远是:等比！**
@@ -277,3 +282,102 @@ rem适配的原理:编写样式时统一使用rem为单位，在不同设备上�
 2 vh = 布局视口高度的1%
 
 查看兼容性： caniuse.com
+
+### 4.物理像素边框(仅了解)
+高清屏幕下 1px对应更多的物理像素(小灯泡)，所以1像素边框看起来比较粗，解决方法如下：
+```css
+@media screen and (-webkit-min-device-pixel-ratio:2){
+      #demo{
+        border: solid 0.5px black;
+      }
+    }
+@media screen and (-webkit-min-device-pixel-ratio:3){
+  #demo{
+    border: solid 0.333px black;
+  }
+}
+```
+
+## 四、移动端事件
+### 1. 事件类型
+移动端事件列表
+* touchstart  元素上触摸开始时触发
+* touchmove   元素上触摸移动时触发
+* touchend    手指从元素上离开时触发
+* touchcancel 触摸被打断时触发（如弹窗、来电等）
+
+以上事件最早出现于IOS safari中，为了向开发人员转达一些特殊的信息
+
+### 2. 应用场景
+* touchstart  事件可用于元素触摸的交互，比如页面跳转，标签页切换
+* touchmove   可用于页面的滑动特效，网页游戏，画板
+* touchend    主要跟touchmove事件结合使用
+* touchcancel 使用率不高
+
+注意：
+* touchmove事件触发后，即使手指离开了元素，touchmove事件也会持续触发
+* 触发touchmove与touchend事件，一定要先触发touchstart
+* 事件的作用在于实现移动端的界面交互
+
+### 3. 点击穿透 touch => click
+**touch事件结束后会默认触发元素的click事件**，如果没有设置完美视口，则事件触发的时间间隔为300ms左右，如设置完美视口则时间间隔为30ms左右（视具体设备特性而定）。
+
+如果touch事件导致隐藏了元素，则click动作将作用到背后的元素上，触发新元素的click事件或页面跳转，此现象称为**点击穿透**。
+
+#### 解决方法一
+阻止默认行为
+```js
+btn.addEventListener('touchend',(event)=>{
+      event.preventDefault()
+      shade.style.display = 'none'
+    })
+```
+
+#### 解决方法二
+让背后元素不具备click特性，修改为普通div标签:
+```html
+    <div id="baidu">点我去百度</div>
+```
+利用touchend事件，点击跳转新网页
+```js
+baidu.addEventListener('touchend',()=>{
+  window.location.href = 'https://www.baidu.com'
+})
+```
+
+#### 解决方法三
+利用css中的pointer-events属性让背后的元素暂时失去click事件，300毫秒后再复原：
+```css
+#baidu{
+      display: block;
+      width: 100%;
+      height: 300px;
+      background-color: skyblue;
+
+      pointer-events: none; 
+    }
+```
+```js
+    btn.addEventListener('touchend',()=>{
+      shade.style.display = 'none'
+      setTimeout(() => {
+        baidu.style.pointerEvents = 'auto' // 恢复正常
+      }, 300);
+    })
+```
+
+#### 解决方法四
+让隐藏的元素延迟300毫秒左右再隐藏
+```js
+btn.addEventListener('touchend',()=>{
+      setTimeout(() => {
+        shade.style.display = 'none'
+      }, 300);
+    })
+```
+
+
+## 五、内网穿透
+1. ngrok
+2. utools 插件 
+
